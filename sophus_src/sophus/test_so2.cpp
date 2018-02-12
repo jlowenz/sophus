@@ -3,8 +3,8 @@
 
 #include <unsupported/Eigen/MatrixFunctions>
 
-#include "so2.h"
-#include "so3.h"
+#include <sophus/so2.h>
+#include <sophus/so3.h>
 
 using namespace Sophus;
 using namespace std;

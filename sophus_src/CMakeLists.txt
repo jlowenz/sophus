@@ -1,8 +1,3 @@
-SET(PROJECT_NAME Sophus)
-
-PROJECT(${PROJECT_NAME})
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-
 SET (CMAKE_VERBOSE_MAKEFILE ON)
 
 IF( NOT CMAKE_BUILD_TYPE )
@@ -19,7 +14,7 @@ ENDIF()
 
 ################################################################################
 # Add local path for finding packages, set the local version first
-set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" )
+set( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/sophus_src/cmake_modules" )
 list( APPEND CMAKE_MODULE_PATH "${CMAKE_ROOT}/Modules" )
 
 ################################################################################
@@ -40,8 +35,7 @@ SET (CLASSES  so2
               se3
               so3
               scso3
-              sim3
-)
+              sim3)
 
 SET (SOURCES)
 
@@ -49,19 +43,24 @@ FOREACH(class ${CLASSES})
   LIST(APPEND SOURCES ${SOURCE_DIR}/${class}.cpp ${SOURCE_DIR}/${class}.h)
 ENDFOREACH(class)
 
-LINK_LIBRARIES (${PROJECT_NAME} ${LIBS})
-
-set( Sophus_LIBRARIES ${Sophus_LIBRARIES} ${LIBS} )
+#LINK_LIBRARIES (${PROJECT_NAME} ${LIBS})
+#set( Sophus_LIBRARIES ${Sophus_LIBRARIES} ${LIBS} )
 
 INCLUDE_DIRECTORIES(${INCLUDE_DIRS})
 ADD_LIBRARY(${PROJECT_NAME} SHARED ${SOURCES})
 
 ADD_EXECUTABLE(test_so2 sophus/test_so2.cpp)
+target_link_libraries(test_so2 sophus)
 ADD_EXECUTABLE(test_se2 sophus/test_se2.cpp)
+target_link_libraries(test_se2 sophus)
 ADD_EXECUTABLE(test_so3 sophus/test_so3.cpp)
+target_link_libraries(test_so3 sophus)
 ADD_EXECUTABLE(test_scso3 sophus/test_scso3.cpp)
+target_link_libraries(test_scso3 sophus)
 ADD_EXECUTABLE(test_se3 sophus/test_se3.cpp)
+target_link_libraries(test_se3 sophus)
 ADD_EXECUTABLE(test_sim3 sophus/test_sim3.cpp)
+target_link_libraries(test_sim3 sophus)
 ENABLE_TESTING()
 
 ADD_TEST(test_so2 test_so2)
