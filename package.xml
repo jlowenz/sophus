@@ -1,0 +1,16 @@
+<package>
+  <name>sophus</name>
+  <description>
+     ROS wrapper for Sophus library by Hauke Strasdat
+  </description>
+  <version>1.0.0</version>
+  <maintainer email="info@vision.in.tum.de">Hauke Strasdat</maintainer>  
+
+  <license>MIT</license>
+  <url>https://github.com/strasdat/Sophus</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+</package>
+
+
